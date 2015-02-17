@@ -11,9 +11,24 @@
 |
 */
 
-Route::get('/', function()
+/*Route::get('/', function()
 {
 	return View::make('hello');
-});
+});*/
 
 Route::resource('admin/users', 'Admin_UsersController');
+
+/*Llamadas al controlador Auth*/
+Route::get('login', 'AuthController@showLogin'); // Mostrar login
+Route::post('login', 'AuthController@postLogin'); // Verificar datos
+Route::get('logout', 'AuthController@logOut'); // Finalizar sesión
+ 
+/*Rutas privadas solo para usuarios autenticados*/
+Route::group(['before' => 'auth'], function()
+{
+    Route::get('/', 'HomeController@showWelcome'); // Vista de inicio
+});
+
+Route::get('admin', function() {
+	return View::make('admin/layout');
+});
