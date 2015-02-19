@@ -7,13 +7,15 @@
     <meta name="author" content="">
     <link rel="icon" href="../../favicon.ico">
 
-    <title>@yield('title', 'Saptec | Administrador')</title>
+    <title>@yield('title', 'Saptec')</title>
 
     {{-- Bootstrap core CSS --}}
     {{ HTML::style('assets/css/bootstrap.min.css', array('media' => 'screen')) }}
 
     {{-- Custom styles for this template --}}
     {{ HTML::style('assets/css/custom_css.css', array('media' => 'screen')) }}
+
+    @yield('head')
 
     <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
     <!--[if lt IE 9]>
@@ -33,15 +35,18 @@
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
           </button>
-          <a class="navbar-brand" href="#">Saptec Admin</a>
+          <a class="navbar-brand" href="#">Saptec</a>
         </div>
         <div id="navbar" class="collapse navbar-collapse">
           <ul class="nav navbar-nav">
-            <li class="active"><a href="#">Usuarios</a></li>
-            <li><a href="#empresas">Empresas Externas</a></li>
-            <li><a href="#cp">Centros de Producción</a></li>
-            <li><a href="#cp">Operarios</a></li>
-            <li><a href="#cp">Materiales</a></li>
+            <li class="active"><a href="#">Home</a></li>
+            <li><a href="#about">Cotizaciones</a></li>
+            <li><a href="#contact">Producción</a></li>
+            <li><a href="#contact">Compras</a></li>
+            <li><a href="#contact">Remisiones</a></li>
+            <li><a href="#contact">Facturación</a></li>
+            <li><a href="#contact">Administrador</a></li>
+            <li><a href="{{ action('AuthController@logOut') }}">Log out</a></li>
           </ul>
         </div><!--/.nav-collapse -->
       </div>
@@ -49,7 +54,7 @@
 
     <div class="container">
       <div class="contenido">
-        @yield('content','Bienvenido Administrador')
+        @yield('content','Bienvenido')
       </div>
     </div><!-- /.container -->
 

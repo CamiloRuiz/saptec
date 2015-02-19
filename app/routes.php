@@ -15,8 +15,8 @@
 {
 	return View::make('hello');
 });*/
-
 Route::resource('admin/users', 'Admin_UsersController');
+
 
 /*Llamadas al controlador Auth*/
 Route::get('login', 'AuthController@showLogin'); // Mostrar login
@@ -27,6 +27,8 @@ Route::get('logout', 'AuthController@logOut'); // Finalizar sesión
 Route::group(['before' => 'auth'], function()
 {
     Route::get('/', 'HomeController@showWelcome'); // Vista de inicio
+
+	Route::resource('cotizaciones', 'CotizacionesController');
 });
 
 Route::get('admin', function() {
