@@ -17,7 +17,8 @@ class CreatePermisosTable extends Migration {
 			$table->increments('id');
 			$table->string('controller');
 			$table->string('action');
-			$table->integer('role_id');
+			$table->integer('role_id')->unsigned();
+			$table->foreign('role_id')->references('id')->on('roles');
 		});
 	}
 
