@@ -9,7 +9,8 @@ class Admin_UsersController extends \BaseController {
 	 */
 	public function index()
 	{
-		return 'Esta es la lista de usuarios';
+		$users = User::all();
+   		return View::make('admin.users.index',compact('users'));
 	}
 
 
@@ -55,7 +56,7 @@ class Admin_UsersController extends \BaseController {
 	 */
 	public function edit($id)
 	{
-		//
+		return 'Aqui editamos la info del usuario: ' . $id;
 	}
 
 
@@ -79,7 +80,7 @@ class Admin_UsersController extends \BaseController {
 	 */
 	public function destroy($id)
 	{
-		//
+		return 'Aqui eliminamos al usuario: ' . $id;
 	}
 
 

@@ -46,7 +46,7 @@
             <li><a href="#contact">Remisiones</a></li>
             <li><a href="#contact">Facturación</a></li>
             <li><a href="#contact">Administrador</a></li>
-            <li><a href="{{ action('AuthController@logOut') }}">Log out</a></li>
+            <li><a href="{{ action('AuthController@logOut') }}">Salir</a></li>
           </ul>
         </div><!--/.nav-collapse -->
       </div>
