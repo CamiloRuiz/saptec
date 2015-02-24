@@ -1,3 +1,24 @@
 .container .contenido {
 	padding-top: 60px;
 }
+
+.content_form .lb_form,
+.content_form .field_form {
+	display: inline-block;
+	float: none;
+	vertical-align: middle;
+}
+.content_form .lb_form {
+	min-width: 10%;
+	max-width: 18%;
+}
+.content_form .field_form {
+	min-width: 78%;
+	max-width: 88%;
+}
+.content_form .field_form .content_radio {
+	display: inline-block;
+	padding: 0 10px;
+	vertical-align: middle;
+	width: auto;
+}

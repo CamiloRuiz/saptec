@@ -21,7 +21,8 @@ class Admin_UsersController extends \BaseController {
 	 */
 	public function create()
 	{
-		return 'Crear usuario';
+		$roles = array('' => 'Por favor seleccione') + Role::lists('nombre','id');
+		return View::make('admin.users.create',compact('roles'));
 	}
 
 
@@ -32,7 +33,17 @@ class Admin_UsersController extends \BaseController {
 	 */
 	public function store()
 	{
-		//
+		$user = new User;
+		$user->nombres = Input::get('nombres');
+		$user->apellidos = Input::get('apellidos');
+		$user->usuario = Input::get('usuario');
+		$user->email = Input::get('email');
+		$user->password = Hash::make(Input::get('password'));
+		$user->estado = Input::get('estado');
+		$user->role_id = Input::get('role');
+		$user->save();
+
+		return Redirect::action('Admin_UsersController@index')->with('notice', 'El usuario ha sido creado correctamente.');
 	}
 
 
@@ -56,7 +67,9 @@ class Admin_UsersController extends \BaseController {
 	 */
 	public function edit($id)
 	{
-		return 'Aqui editamos la info del usuario: ' . $id;
+		$user = User::find($id);
+		$roles = Role::lists('nombre','id');
+		return View::make('admin.users.edit',compact('user','roles'));
 	}
 
 
@@ -68,7 +81,31 @@ class Admin_UsersController extends \BaseController {
 	 */
 	public function update($id)
 	{
-		//
+		$user = User::findOrFail($id);
+
+		$user->nombres = Input::get('nombres');
+		$user->apellidos = Input::get('apellidos');
+		$user->usuario = Input::get('usuario');
+		$user->email = Input::get('email');
+		$user->password = Hash::make(Input::get('password'));
+		$user->estado = Input::get('estado');
+		$user->role_id = Input::get('role');
+		$user->save();
+
+		return Redirect::action('Admin_UsersController@index')->with('notice', 'El usuario ha sido modificado correctamente.');
+	}
+
+
+	/**
+	 * Show the form for confirm delete the specified resource.
+	 *
+	 * @param  int  $id
+	 * @return Response
+	 */
+	public function confirmDelete($user)
+	{
+		$user = User::find($user);
+		return View::make('admin.users.delete',compact('user'));
 	}
 
 
@@ -80,7 +117,11 @@ class Admin_UsersController extends \BaseController {
 	 */
 	public function destroy($id)
 	{
-		return 'Aqui eliminamos al usuario: ' . $id;
+		$id = Input::get('user');
+        $user = User::findOrFail($id);
+        $user->delete();
+
+        return Redirect::action('Admin_UsersController@index')->with('notice', 'El usuario ha sido eliminado correctamente.');
 	}
 
 

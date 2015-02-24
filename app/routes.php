@@ -15,7 +15,12 @@
 {
 	return View::make('hello');
 });*/
+Route::get('admin/users/delete/{user}', array(
+    'as' => 'delete_user',
+    'uses' => 'Admin_UsersController@confirmDelete'
+));
 Route::resource('admin/users', 'Admin_UsersController');
+
 
 
 /*Llamadas al controlador Auth*/

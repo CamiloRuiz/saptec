@@ -40,8 +40,9 @@
 	    			<td>{{ ($user->estado) ? 'Sí' : 'No' }}</td>
 	    			<td>{{ $user->role->nombre }}</td>
 	    			<td><a href="{{ URL::action('Admin_UsersController@show', $user->id) }}" class="btn btn-primary">Ver</a></td>
-	    			<td><a href="{{ action('Admin_UsersController@edit', $user->id) }}" class="btn btn-default">Editar</a></td>
-	    			<td><a href="{{ URL::action('Admin_UsersController@destroy', $user->id) }}" class="btn btn-danger">Eliminar</a></td>
+	    			<td><a href="{{ URL::action('Admin_UsersController@edit', $user->id) }}" class="btn btn-warning">Editar</a></td>
+	    			<td><a href="{{ URL::action('Admin_UsersController@confirmDelete', $user->id) }}" class="btn btn-danger">Eliminar</a></td>
+	    			<td><a href="{{ URL::route('delete_user', array('user'=>$user->id)) }}" class="btn btn-danger">Eliminar 2</a></td>
 	    		</tr>
 	    		@endforeach
 	    	</tbody>
