@@ -2,6 +2,11 @@
 
 class Admin_UsersController extends \BaseController {
 
+	public function __construct()
+    {
+        $this->beforeFilter('csrf', array('on' => array('store','update')) );
+    }
+
 	/**
 	 * Display a listing of the resource.
 	 *
@@ -33,17 +38,24 @@ class Admin_UsersController extends \BaseController {
 	 */
 	public function store()
 	{
-		$user = new User;
-		$user->nombres = Input::get('nombres');
-		$user->apellidos = Input::get('apellidos');
-		$user->usuario = Input::get('usuario');
-		$user->email = Input::get('email');
-		$user->password = Hash::make(Input::get('password'));
-		$user->estado = Input::get('estado');
-		$user->role_id = Input::get('role');
-		$user->save();
+        if($this->validateForms(Input::all()) === true)
+        {
+			$user = new User;
+			$user->nombres = Input::get('nombres');
+			$user->apellidos = Input::get('apellidos');
+			$user->usuario = Input::get('usuario');
+			$user->email = Input::get('email');
+			$user->password = Hash::make(Input::get('password'));
+			$user->estado = Input::get('estado');
+			$user->role_id = Input::get('role');
+			$user->save();
 
-		return Redirect::action('Admin_UsersController@index')->with('notice', 'El usuario ha sido creado correctamente.');
+			return Redirect::action('Admin_UsersController@index')->with('notice', 'El usuario ha sido creado correctamente.');
+		}
+		else
+		{
+            return Redirect::action('Admin_UsersController@create')->withErrors($this->validateForms(Input::all()))->withInput();
+        }
 	}
 
 
@@ -124,5 +136,38 @@ class Admin_UsersController extends \BaseController {
         return Redirect::action('Admin_UsersController@index')->with('notice', 'El usuario ha sido eliminado correctamente.');
 	}
 
+
+
+	//Método privado para validar los formularios, al fin y al cabo, siempre son iguales reutilización de código
+    private function validateForms($inputs = array())
+    {
+        $rules = array(
+			'nombres'   => 'required|alpha',
+			'apellidos' => 'required|alpha',
+			'usuario'   => 'required|alpha_num',
+			'email'     => 'required|email',
+			'password'  => 'required|min:4',
+			'role'      => 'required'
+        );
+            
+        $messages = array(
+			'required'          => 'El campo :attribute es obligatorio.',
+			'password.required' => 'Por favor ingrese una contraseña.',
+			'role.required'     => 'Por favor seleccione el rol de este usuario.',
+			'alpha'             => 'El campo :attribute debe contener solo letras.',
+			'alpha_num'         => 'El campo :attribute debe contener solo letras y números.',
+			'email'             => 'El campo :attribute debe ser un correo electrónico válido.',
+			'password.min'      => 'La contraseña debe tener más de :min carácteres.'
+        );
+    
+        $validation = Validator::make($inputs, $rules, $messages);
+ 
+        if($validation->fails())
+        {
+            return $validation;
+        }else{
+            return true;
+        }
+    }
 
 }

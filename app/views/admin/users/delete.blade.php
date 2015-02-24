@@ -1,8 +1,8 @@
-@extends('../layout')
+@extends('admin.layout')
 
 @section('content')
     <div class="page-header">
-        <h1>Eliminar usuario {{ $user->nombres }} {{ $user->apellidos }} <small>Esta seguro?</small></h1>
+        <h1 class="center">¿Esta seguro que desea eliminar al usuario {{ $user->nombres }} {{ $user->apellidos }} ?</h1>
     </div>
     <div class="content_form">
 	    {{ Form::open(array(

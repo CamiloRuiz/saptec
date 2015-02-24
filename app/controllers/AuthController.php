@@ -29,7 +29,7 @@ class AuthController extends BaseController {
             return Redirect::intended('/');
         }
         // Si los datos no son los correctos volvemos al login y mostramos un error
-        return Redirect::back()->with('error_message', 'Invalid data')->withInput();
+        return Redirect::back()->with('error_message', 'Usuario o contraseña incorrectos.')->withInput();
     }
  
     public function logOut()
@@ -37,7 +37,7 @@ class AuthController extends BaseController {
         // Cerramos la sesión
         Auth::logout();
         // Volvemos al login y mostramos un mensaje indicando que se cerró la sesión
-        return Redirect::to('login')->with('error_message', 'Logged out correctly');
+        return Redirect::to('login')->with('error_message', 'Gracias, vuelva pronto.');
     }
  
 }

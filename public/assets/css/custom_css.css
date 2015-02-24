@@ -1,7 +1,24 @@
+.table>tbody>tr>td,
+.table>tbody>tr>th,
+.table>tfoot>tr>td,
+.table>tfoot>tr>th,
+.table>thead>tr>td,
+.table>thead>tr>th {
+	vertical-align: middle;
+}
+
+.center {
+	text-align: center;
+}
+
 .container .contenido {
 	padding-top: 60px;
 }
 
+.content_form.form_small {
+	margin: 15px auto;
+	width: 500px;
+}
 .content_form .lb_form,
 .content_form .field_form {
 	display: inline-block;
@@ -15,6 +32,15 @@
 .content_form .field_form {
 	min-width: 78%;
 	max-width: 88%;
+}
+/*.content_form.form_small .form-group,
+.content_form.form_small .lb_form,
+.content_form.form_small .field_form {
+	text-align: left;
+}*/
+.content_form.form_small .lb_form {
+	min-width: 20%;
+	max-width: 20%;
 }
 .content_form .field_form .content_radio {
 	display: inline-block;

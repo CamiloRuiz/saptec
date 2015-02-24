@@ -35,17 +35,17 @@
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
           </button>
-          <a class="navbar-brand" href="#">Saptec</a>
+          {{ link_to('/', "Saptec", array('class' => 'navbar-brand')) }}
         </div>
         <div id="navbar" class="collapse navbar-collapse">
           <ul class="nav navbar-nav">
-            <li class="active"><a href="#">Home</a></li>
-            <li><a href="#about">Cotizaciones</a></li>
+            <li class="active">{{ link_to('/', "Home") }}</li>
+            <li>{{ link_to('cotizaciones', "Cotizaciones") }}</li>
             <li><a href="#contact">Producción</a></li>
             <li><a href="#contact">Compras</a></li>
             <li><a href="#contact">Remisiones</a></li>
             <li><a href="#contact">Facturación</a></li>
-            <li><a href="#contact">Administrador</a></li>
+            <li>{{ link_to('admin', "Administrador") }}</li>
             <li><a href="{{ action('AuthController@logOut') }}">Salir</a></li>
           </ul>
         </div><!--/.nav-collapse -->

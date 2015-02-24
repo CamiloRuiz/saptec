@@ -5,6 +5,6 @@
 @stop
 
 @section('content')
-    <h1>Bienvenido Fulanito!</h1>
-    <p>We have a template!</p>
+    <h1>Bienvenido!</h1>
+    <p>Let's get started!</p>
 @stop

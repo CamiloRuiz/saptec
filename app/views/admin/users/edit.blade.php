@@ -1,17 +1,27 @@
-@extends('../layout')
+@extends('admin.layout')
 
 @section('title')
 	Saptec | Editar Usuario
 @stop
 
 @section('content')
-    @if(Session::has('notice'))
-       <p> <strong> {{ Session::get('notice') }} </strong> </p>
-    @endif
 
     <div class="page-header">
         <h1>Editar Usuario</h1>
     </div>
+
+    @if(Session::has('notice'))
+    	<p><strong> {{ Session::get('notice') }} </strong></p>
+    @endif
+
+    @if($errors->has())
+		<div class="alert-box alert">           
+		<!--recorremos los errores en un loop y los mostramos-->
+			@foreach ($errors->all('<p>:message</p>') as $message)
+			{{ $message }}
+			@endforeach
+		</div>
+	@endif
 	
 	<div class="content_form">
 	    {{ Form::open(array(

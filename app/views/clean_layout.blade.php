@@ -7,13 +7,15 @@
     <meta name="author" content="">
     <link rel="icon" href="../../favicon.ico">
 
-    <title>@yield('title', 'Saptec | Administrador')</title>
+    <title>@yield('title', 'Saptec')</title>
 
     {{-- Bootstrap core CSS --}}
     {{ HTML::style('assets/css/bootstrap.min.css', array('media' => 'screen')) }}
 
     {{-- Custom styles for this template --}}
     {{ HTML::style('assets/css/custom_css.css', array('media' => 'screen')) }}
+
+    @yield('head')
 
     <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
     <!--[if lt IE 9]>
@@ -27,30 +29,14 @@
     <nav class="navbar navbar-inverse navbar-fixed-top">
       <div class="container">
         <div class="navbar-header">
-          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
-            <span class="sr-only">Toggle navigation</span>
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-          </button>
-          <a class="navbar-brand" href="{{ url('admin') }}">Saptec Admin</a>
+          <a class="navbar-brand" href="#">Saptec</a>
         </div>
-        <div id="navbar" class="collapse navbar-collapse">
-          <ul class="nav navbar-nav">
-            <li class="active">{{ link_to('admin/users', "Usuarios") }}</li>
-            <li><a href="#empresas">Empresas Externas</a></li>
-            <li><a href="#cp">Centros de Producción</a></li>
-            <li><a href="#mo">Operarios</a></li>
-            <li><a href="#mp">Materiales</a></li>
-            <li>{{ link_to('/', "Dashboard") }}</li>
-          </ul>
-        </div><!--/.nav-collapse -->
       </div>
     </nav>
 
     <div class="container">
       <div class="contenido">
-        @yield('content','Bienvenido Administrador')
+        @yield('content','Bienvenido')
       </div>
     </div><!-- /.container -->
 
