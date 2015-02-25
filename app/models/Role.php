@@ -13,7 +13,7 @@ class Role extends Eloquent {
 	// Role __has_many__ Permiso
 	public function permisos()
 	{
-		return $this->hasMany('Permiso');
+		return $this->belongsToMany('Permiso');
 	}
 
 }

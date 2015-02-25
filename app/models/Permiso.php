@@ -6,7 +6,7 @@ class Permiso extends Eloquent {
 
 	public function role()
     {
-        return $this->belongsTo('Role');
+        return $this->belongsToMany('Role');
     }
 
 }

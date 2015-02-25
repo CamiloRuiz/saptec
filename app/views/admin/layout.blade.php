@@ -37,7 +37,8 @@
         </div>
         <div id="navbar" class="collapse navbar-collapse">
           <ul class="nav navbar-nav">
-            <li class="active">{{ link_to('admin/users', "Usuarios") }}</li>
+            <li {{ (Request::is('admin/users*')) ? 'class="active"' : '' }} >{{ link_to('admin/users', "Usuarios") }}</li>
+            <li {{ (Request::is('admin/permisos*')) ? 'class="active"' : '' }}>{{ link_to('admin/permisos', "Permisos") }}</li>
             <li><a href="#empresas">Empresas Externas</a></li>
             <li><a href="#cp">Centros de Producción</a></li>
             <li><a href="#mo">Operarios</a></li>

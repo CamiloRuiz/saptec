@@ -22,6 +22,9 @@
 Route::get('admin/users/delete/{user}', 'Admin_UsersController@confirmDelete');
 Route::resource('admin/users', 'Admin_UsersController');
 
+Route::get('admin/permisos/delete/{user}', 'Admin_PermisosController@confirmDelete');
+Route::resource('admin/permisos', 'Admin_PermisosController');
+
 
 
 /*Llamadas al controlador Auth*/
