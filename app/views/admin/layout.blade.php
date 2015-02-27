@@ -37,8 +37,14 @@
         </div>
         <div id="navbar" class="collapse navbar-collapse">
           <ul class="nav navbar-nav">
-            <li {{ (Request::is('admin/users*')) ? 'class="active"' : '' }} >{{ link_to('admin/users', "Usuarios") }}</li>
-            <li {{ (Request::is('admin/permisos*')) ? 'class="active"' : '' }}>{{ link_to('admin/permisos', "Permisos") }}</li>
+            <li class="dropdown {{ ( (Request::is('admin/users*')) || (Request::is('admin/roles*')) || (Request::is('admin/permisos*')) ) ? 'active' : '' }}">
+              <a href="" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Usuarios <span class="caret"></span></a>
+              <ul class="dropdown-menu" role="menu">
+                <li>{{ link_to('admin/users', "Usuarios") }}</li>
+                <li>{{ link_to('admin/permisos', "Permisos") }}</li>
+                <li>{{ link_to('admin/roles', "Roles") }}</li>
+              </ul>
+            </li>
             <li><a href="#empresas">Empresas Externas</a></li>
             <li><a href="#cp">Centros de Producción</a></li>
             <li><a href="#mo">Operarios</a></li>

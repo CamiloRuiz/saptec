@@ -22,8 +22,13 @@
 Route::get('admin/users/delete/{user}', 'Admin_UsersController@confirmDelete');
 Route::resource('admin/users', 'Admin_UsersController');
 
-Route::get('admin/permisos/delete/{user}', 'Admin_PermisosController@confirmDelete');
+Route::get('admin/permisos/delete/{permiso}', 'Admin_PermisosController@confirmDelete');
 Route::resource('admin/permisos', 'Admin_PermisosController');
+
+Route::get('admin/roles/delete/{role}', 'Admin_RolesController@confirmDelete');
+Route::get('admin/roles/permisos/{role}', 'Admin_RolesController@managePermisos');
+Route::post('admin/roles/permisos/{role}', 'Admin_RolesController@updatePermisos');
+Route::resource('admin/roles', 'Admin_RolesController');
 
 
 

@@ -84,7 +84,7 @@ class Admin_PermisosController extends \BaseController {
 			$permiso->action = Input::get('action');
 			$permiso->save();
 
-			return Redirect::action('Admin_PermisosController@index')->with('notice', 'El permiso ha sido modificado correctamente.');
+			return Redirect::action('Admin_PermisosController@index')->with('notice', 'El permiso se modificó correctamente.');
 		}
 		else
 		{
@@ -102,7 +102,7 @@ class Admin_PermisosController extends \BaseController {
 	 */
 	public function confirmDelete($permiso)
 	{
-		$permiso = User::find($permiso);
+		$permiso = Permiso::find($permiso);
 		return View::make('admin.permisos.delete',compact('permiso'));
 	}
 
