@@ -161,7 +161,7 @@ class Admin_RolesController extends \BaseController {
 		// return $respuesta;
 		$controladores = Permiso::orderBy('controller', 'asc')->groupBy('controller')->get();
 		$info_permisos = Permiso::orderBy('action', 'asc')->get();
-		return Redirect::action('Admin_RolesController@managePermisos',array($role))->with('notice', 'Se actualizaron los permisos del rol correctamente.')->with('controladores',$controladores)->with('permisos',$info_permisos);
+		return Redirect::action('Admin_RolesController@managePermisos',array($role->id))->with('notice', 'Se actualizaron los permisos del rol correctamente.')->with('controladores',$controladores)->with('permisos',$info_permisos);
 	}
 
 
